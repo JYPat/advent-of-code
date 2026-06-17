@@ -34,8 +34,6 @@ def solution(target: int) -> tuple[int, int] | None:
 
 
 def solution_two():
-    lines = sorted([int(line) for line in open(path, "r", encoding="utf-8")])
-
     for line in lines:
         target = 2020 - line
         answer = solution(target)
