@@ -1,17 +1,22 @@
 import sys
+from pathlib import Path
 
-if len(sys.argv) < 2:
-    print("USAGE: python script.py INPUT/DEMO")
-    sys.exit(1)
+script_dir = Path(sys.argv[0]).resolve().parent
 
-file, field = sys.argv[0].strip(".py"), sys.argv[1]
 
-if field == "INPUT":
-    path = f"./input_{file}.txt"
-elif field == "DEMO":
-    path = f"./demo_{file}.txt"
-else:
-    print("Usage: python script.py INPUT/DEMO")
-    sys.exit(1)
+def get_path() -> str:
+    if len(sys.argv) < 2:
+        print("USAGE: python script.py INPUT/DEMO")
+        sys.exit(1)
 
-lines = (line for line in open(path, "r", encoding="utf-8"))
+    file, field = Path(sys.argv[0]).stem, sys.argv[1].upper()
+
+    if field == "INPUT":
+        path = script_dir / f"input_{file}.txt"
+    elif field == "DEMO":
+        path = script_dir / f"./demo_{file}.txt"
+    else:
+        print("Usage: python script.py INPUT/DEMO")
+        sys.exit(1)
+
+    return str(path)
