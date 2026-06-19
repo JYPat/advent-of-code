@@ -1,0 +1,4 @@
+venv
+pyproject.toml
+*.egg-info
+__pycache__
