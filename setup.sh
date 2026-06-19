@@ -3,7 +3,7 @@
 YEAR=$1
 DAY=$2
 
-DIR="src/${YEAR}/${DAY}"
+DIR="src/${YEAR}/day_${DAY}"
 
 mkdir -p "$DIR"
 
