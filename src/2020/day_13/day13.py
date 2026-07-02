@@ -12,3 +12,20 @@ def part_one():
     best_index = time_to.index(min(time_to))
 
     print(f"Part 1: {(ids[best_index] * time_to[best_index])}")
+
+
+def part_two():
+    schedule = block[1].split(",")
+    keys = {
+        int(mod): (-i) % int(mod) for i, mod in enumerate(schedule) if mod.isdigit()
+    }
+    x, lcm = 0, 1
+    for mod, constraint in keys.items():
+        while x % mod != constraint:
+            x += lcm
+        lcm *= mod
+
+    print(f"Part 2: {x}")
+
+
+part_two()
